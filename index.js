@@ -3,7 +3,7 @@ const hero = {
    name: 'Wizard',
    avatar: 'images/wizard.png',
    health: 60,
-   diceRoll: 6,
+   diceRoll: [3, 1, 4],
    diceCount: 3
 }
 
@@ -12,7 +12,7 @@ const monster = {
    name: 'Ork',
    avatar: 'images/orc.png',
    health: 10,
-   diceRoll: 4,
+   diceRoll: [2],
    diceCount: 1
 }
 
@@ -21,11 +21,16 @@ function renderCharacter(character) {
 
    const {elementId, name, avatar, health, diceRoll, diceCount} = character;
 
-   let diceHtml = '';
+   // For loops are repetetive, clunky and messy
+   // There's a modern and more easier way to do this
+   // let diceHtml = '';
+   // for (let i = 0; i < diceCount; i++) {
+   //    diceHtml += `<div class="dice">${diceRoll[i]}</div>`
+   // }
 
-   for (let i = 0; i < diceCount; i++) {
-      diceHtml += `<div class="dice">6</div>`
-   }
+   const diceHtml = diceRoll.map(function(roll) {
+      return `<div class="dice">${roll}</div>`;
+   }).join('');
 
    document.getElementById(elementId).innerHTML = `
       <div class="character-card">
@@ -42,7 +47,7 @@ function renderCharacter(character) {
 renderCharacter(hero);
 renderCharacter(monster);
 
-// ----------------- OBJECT DESTRUCTURING ------------------------------
+// --------------------------------- OBJECT DESTRUCTURING --------------------------------------------
 
 // ------------ Object -----------------
 // const favouriteFilm = {
@@ -71,3 +76,26 @@ renderCharacter(monster);
 
 // -------------- Output -------------------
 //My favourite film is Top Gun starring Tom Cruise. It's an action film that was directed by Tony Scott and released in 1986
+
+// ------------------------------ THE .map() METHOD ----------------------------------------------
+// JavaScript mothod for iterating over arrays 
+// .map() method always returns an array
+
+// ------------- Example -------------------------------
+// const energyCostEuros = [140, 153, 164, 153, 128, 146]
+// const exchangeRate = 1.13
+
+// const energyCostDollars = energyCostEuros.map(function(euroCost){
+//    return euroCost * exchangeRate
+// })
+
+// ----------------------------------- THE .join() METHOD --------------------------------------------
+// JavaScript mothod for creating strings from arrays 
+// Concatenates the elements of the array into a string
+// Let you choose how the elements are separated
+// Always returns a string
+
+// ------------------ Example -------------------
+// const cssClassesArray = ['btn', 'btn-primary', 'btn-active', 'btn-sidebar']
+
+// const cssClassesString = cssClassesArray.join(' .')
