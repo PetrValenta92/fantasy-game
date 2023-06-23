@@ -3,7 +3,6 @@ const hero = {
    name: 'Wizard',
    avatar: 'images/wizard.png',
    health: 60,
-   diceRoll: [3, 1, 4],
    diceCount: 3
 }
 
@@ -12,8 +11,25 @@ const monster = {
    name: 'Ork',
    avatar: 'images/orc.png',
    health: 10,
-   diceRoll: [2],
    diceCount: 1
+}
+
+function getDiceRollArray(diceCount) {
+
+   let diceRollArray = [];
+
+   for (let i = 0; i < diceCount; i++) {
+      diceRollArray.push(Math.floor(Math.random() * 6) + 1);
+   };
+
+   return diceRollArray;
+}
+
+function getDiceHtml(diceCount) {
+
+   return getDiceRollArray(diceCount).map( function (num) {
+      return `<div class="dice">${num}</div>`;   
+   }).join('');
 }
 
 
@@ -21,16 +37,7 @@ function renderCharacter(character) {
 
    const {elementId, name, avatar, health, diceRoll, diceCount} = character;
 
-   // For loops are repetetive, clunky and messy
-   // There's a modern and more easier way to do this
-   // let diceHtml = '';
-   // for (let i = 0; i < diceCount; i++) {
-   //    diceHtml += `<div class="dice">${diceRoll[i]}</div>`
-   // }
-
-   const diceHtml = diceRoll.map(function(roll) {
-      return `<div class="dice">${roll}</div>`;
-   }).join('');
+   const diceHtml = getDiceHtml(diceCount);
 
    document.getElementById(elementId).innerHTML = `
       <div class="character-card">
@@ -78,6 +85,14 @@ renderCharacter(monster);
 //My favourite film is Top Gun starring Tom Cruise. It's an action film that was directed by Tony Scott and released in 1986
 
 // ------------------------------ THE .map() METHOD ----------------------------------------------
+
+// For loops are repetetive, clunky and messy
+// There's a modern and more easier way to do this
+// let diceHtml = '';
+// for (let i = 0; i < diceCount; i++) {
+//    diceHtml += `<div class="dice">${diceRoll[i]}</div>`
+// }
+
 // JavaScript mothod for iterating over arrays 
 // .map() method always returns an array
 
