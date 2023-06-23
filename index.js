@@ -16,13 +16,9 @@ const monster = {
 
 function getDiceRollArray(diceCount) {
 
-   let diceRollArray = [];
-
-   for (let i = 0; i < diceCount; i++) {
-      diceRollArray.push(Math.floor(Math.random() * 6) + 1);
-   };
-
-   return diceRollArray;
+   return new Array(diceCount).fill(0).map(function() {
+      return Math.floor(Math.random() * 6) + 1;
+   });
 }
 
 function getDiceHtml(diceCount) {
@@ -39,20 +35,25 @@ function renderCharacter(character) {
 
    const diceHtml = getDiceHtml(diceCount);
 
-   document.getElementById(elementId).innerHTML = `
-      <div class="character-card">
-         <h4 class="name">${name}</h4>
-         <img class="avatar" src=${avatar} />
-         <p class="health">health: <b>${health}</b></p>
-         <div class="dice-container">
+   document.getElementById(elementId).innerHTML = 
+      `<div class="character-card">
+         <h4 class="name"> ${name} </h4>
+         <img class="avatar" src="${avatar}" />
+         <div class="health">health: <b> ${health} </b></div>
+         <div class="dice-container">    
             ${diceHtml}
          </div>
-      </div>
-   `
+      </div>`;
 }
 
 renderCharacter(hero);
 renderCharacter(monster);
+
+
+
+
+
+
 
 // --------------------------------- OBJECT DESTRUCTURING --------------------------------------------
 
@@ -114,3 +115,19 @@ renderCharacter(monster);
 // const cssClassesArray = ['btn', 'btn-primary', 'btn-active', 'btn-sidebar']
 
 // const cssClassesString = cssClassesArray.join(' .')
+
+// -----------------------------------
+// Functions returning a function
+// Array constructor
+// --------------------------------
+
+// ----------------------------------- THE .fill() METHOD --------------------------------------------
+// It converts the elements in an array to a provided static value
+
+// -------------------------------- Example --------------------------------
+// const goldCoins = new Array(1000).fill('🌕');
+
+// ----------------------------------- CHAINING .fill() AND .map() -----------------------------------
+// const poisonMushrooms = new Array(10).fill('🍄').map(function(mushroom){
+//    return `<div class="box">${mushroom}</div>`;
+// }).join('');
