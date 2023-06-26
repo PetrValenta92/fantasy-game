@@ -14,6 +14,28 @@ const monster = {
    diceCount: 1
 }
 
+function Character(data) {
+   this.elementId = data.elementId;
+   this.name = data.name;
+   this.avatar = data.avatar;
+   this.health = data.health;
+   this.diceCount = data.diceCount;
+
+   this.getCharacterHtml = function() {
+      const { elementId, name, avatar, health, diceCount } = this;
+      const diceHtml = getDiceHtml(diceCount);
+      document.getElementById(elementId).innerHTML = 
+         `<div class="character-card">
+            <h4 class="name"> ${name} </h4>
+            <img class="avatar" src="${avatar}" />
+            <div class="health">health: <b> ${health} </b></div>
+            <div class="dice-container">    
+               ${diceHtml}
+            </div>
+         </div>`;
+   }
+}
+
 function getDiceRollArray(diceCount) {
 
    return new Array(diceCount).fill(0).map(function() {
@@ -28,29 +50,11 @@ function getDiceHtml(diceCount) {
    }).join('');
 }
 
+const wizard = new Character(hero);
+const ork = new Character(monster);
 
-function renderCharacter(character) {
-
-   const {elementId, name, avatar, health, diceRoll, diceCount} = character;
-
-   const diceHtml = getDiceHtml(diceCount);
-
-   document.getElementById(elementId).innerHTML = 
-      `<div class="character-card">
-         <h4 class="name"> ${name} </h4>
-         <img class="avatar" src="${avatar}" />
-         <div class="health">health: <b> ${health} </b></div>
-         <div class="dice-container">    
-            ${diceHtml}
-         </div>
-      </div>`;
-}
-
-renderCharacter(hero);
-renderCharacter(monster);
-
-
-
+wizard.getCharacterHtml();
+ork.getCharacterHtml();
 
 
 
@@ -131,3 +135,50 @@ renderCharacter(monster);
 // const poisonMushrooms = new Array(10).fill('🍄').map(function(mushroom){
 //    return `<div class="box">${mushroom}</div>`;
 // }).join('');
+
+// ------------------------------------- CONSTRUCTOR FUNCTIONS -------------------------------------  
+// Always write CF with first capital letter!
+// In JS functions are objects
+// "this" key word refers to the new object which is created
+
+// ------------------------------------- Example --------------------------------
+// ---------- Data -----------
+// const animalForRelease1 = {
+//    name: 'Tilly',
+//    species: 'tiger',
+//    weightKg: 56,
+//    age: 2,
+//    dateOfRelease: '03-02-2022'
+// }
+// const animalForRelease2 = {
+//    name: 'Nelly',
+//    species: 'elephant',
+//    weightKg: 320,
+//    age: 16,
+//    dateOfRelease: '03-02-2022'
+// }
+
+// ------ Constructor function ----
+// function Animal(data){
+//    this.name = data.name
+//    this.species = data.species
+//    this.weightKg = data.weightKg
+//    this.age = data.age
+//    this.dateOfRelease = data.dateOfRelease
+// -------- Method --------------
+//   this.summariseAnimal = function(){
+//      console.log(`${this.name} is a ${this.age} year old 
+//      ${this.species} which weighs ${this.weightKg}kg and was 
+//      released into the wild on ${this.dateOfRelease}`)
+//   }
+// }
+
+// const tillyTheTiger = new Animal(animalForRelease1)
+// const nellyTheElephant = new Animal(animalForRelease2)
+
+// tillyTheTiger.summariseAnimal()
+// nellyTheElephant.summariseAnimal()
+
+// ----------------------------------------- METHODS -----------------------------------------------
+// Properties on objects that contain functions
+// If you can write a function, you can write a method
