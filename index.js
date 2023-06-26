@@ -16,9 +16,11 @@ const monster = {
 
 function Character(data) {
    Object.assign(this, data);
+
    this.getCharacterHtml = function() {
       const { elementId, name, avatar, health, diceCount } = this;
-      const diceHtml = getDiceHtml(diceCount);
+      const diceHtml = this.getDiceHtml(diceCount);
+      
       document.getElementById(elementId).innerHTML = 
          `<div class="character-card">
             <h4 class="name"> ${name} </h4>
@@ -29,6 +31,12 @@ function Character(data) {
             </div>
          </div>`;
    }
+
+   this.getDiceHtml = function(diceCount) {
+      return getDiceRollArray(diceCount).map( function (num) {
+         return `<div class="dice">${num}</div>`;   
+      }).join('');
+   }
 }
 
 function getDiceRollArray(diceCount) {
@@ -36,13 +44,6 @@ function getDiceRollArray(diceCount) {
    return new Array(diceCount).fill(0).map(function() {
       return Math.floor(Math.random() * 6) + 1;
    });
-}
-
-function getDiceHtml(diceCount) {
-
-   return getDiceRollArray(diceCount).map( function (num) {
-      return `<div class="dice">${num}</div>`;   
-   }).join('');
 }
 
 const wizard = new Character(hero);
