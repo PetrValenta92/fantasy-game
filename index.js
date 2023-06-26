@@ -1,18 +1,4 @@
-const hero = {
-   elementId: 'hero',
-   name: 'Wizard',
-   avatar: 'images/wizard.png',
-   health: 60,
-   diceCount: 3
-}
-
-const monster = {
-   elementId: 'monster',
-   name: 'Ork',
-   avatar: 'images/orc.png',
-   health: 10,
-   diceCount: 1
-}
+import characterData from "./data.js";
 
 function Character(data) {
    Object.assign(this, data);
@@ -48,11 +34,11 @@ function getDiceRollArray(diceCount) {
 
 function render() {
    document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml();
-   document.getElementById(monster.elementId).innerHTML = ork.getCharacterHtml();
+   document.getElementById(ork.elementId).innerHTML = ork.getCharacterHtml();
 };
 
-const wizard = new Character(hero);
-const ork = new Character(monster);
+const wizard = new Character(characterData.hero);
+const ork = new Character(characterData.monster);
 
 render();
 
