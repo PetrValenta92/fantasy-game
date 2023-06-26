@@ -1,4 +1,6 @@
-import characterData from "./data.js";
+import charData from "./data.js";
+// Named import must have the same name and curly brackets!!!
+import { getDiceRollArray } from "./utils.js";
 
 function Character(data) {
    Object.assign(this, data);
@@ -25,20 +27,13 @@ function Character(data) {
    }
 }
 
-function getDiceRollArray(diceCount) {
-
-   return new Array(diceCount).fill(0).map(function() {
-      return Math.floor(Math.random() * 6) + 1;
-   });
-}
-
 function render() {
    document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml();
    document.getElementById(ork.elementId).innerHTML = ork.getCharacterHtml();
 };
 
-const wizard = new Character(characterData.hero);
-const ork = new Character(characterData.monster);
+const wizard = new Character(charData.hero);
+const ork = new Character(charData.monster);
 
 render();
 
