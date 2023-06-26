@@ -1,10 +1,16 @@
 import charData from "./data.js";
 import Character from "./Character.js";
 
+function attack() {
+   render();
+}
+
 function render() {
    document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
    document.getElementById('monster').innerHTML = ork.getCharacterHtml();
 };
+
+document.getElementById('attack-button').addEventListener('click', attack);
 
 const wizard = new Character(charData.hero);
 const ork = new Character(charData.monster);
