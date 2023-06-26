@@ -21,8 +21,8 @@ function Character(data) {
       const { elementId, name, avatar, health, diceCount } = this;
       const diceHtml = this.getDiceHtml(diceCount);
       
-      document.getElementById(elementId).innerHTML = 
-         `<div class="character-card">
+      return `
+         <div class="character-card">
             <h4 class="name"> ${name} </h4>
             <img class="avatar" src="${avatar}" />
             <div class="health">health: <b> ${health} </b></div>
@@ -46,12 +46,15 @@ function getDiceRollArray(diceCount) {
    });
 }
 
+function render() {
+   document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml();
+   document.getElementById(monster.elementId).innerHTML = ork.getCharacterHtml();
+};
+
 const wizard = new Character(hero);
 const ork = new Character(monster);
 
-wizard.getCharacterHtml();
-ork.getCharacterHtml();
-
+render();
 
 
 
