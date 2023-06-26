@@ -15,12 +15,7 @@ const monster = {
 }
 
 function Character(data) {
-   this.elementId = data.elementId;
-   this.name = data.name;
-   this.avatar = data.avatar;
-   this.health = data.health;
-   this.diceCount = data.diceCount;
-
+   Object.assign(this, data);
    this.getCharacterHtml = function() {
       const { elementId, name, avatar, health, diceCount } = this;
       const diceHtml = getDiceHtml(diceCount);
@@ -182,3 +177,9 @@ ork.getCharacterHtml();
 // ----------------------------------------- METHODS -----------------------------------------------
 // Properties on objects that contain functions
 // If you can write a function, you can write a method
+
+// ----------------------------------------- Object.assign() ----------------------------------------
+// Copies properties from a source object into a target object
+// Returns a new version of the target object
+
+// Object.assign(target, source)
