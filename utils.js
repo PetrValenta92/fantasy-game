@@ -6,5 +6,11 @@ function getDiceRollArray(diceCount) {
     });
  }
 
+ function getDicePlaceholderHtml(diceCount) {
+   return new Array(diceCount).fill(0).map(function() {
+      return `<div class="placeholder-dice"></div>`;
+   }).join('');
+ }
+
  // Named export - only one at the time; must be in curly brackets!!!
- export {getDiceRollArray} 
+ export {getDiceRollArray, getDicePlaceholderHtml} 
