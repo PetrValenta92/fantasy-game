@@ -5,6 +5,12 @@ function Character(data) {
     Object.assign(this, data);
 
     this.diceArray = getDicePlaceholderHtml(this.diceCount);
+
+   //  this.getDiceHtml = function(diceCount) {
+   //     return getDiceRollArray(diceCount).map( function (num) {
+   //        return `<div class="dice">${num}</div>`;   
+   //     }).join('');
+   //  }
  
     this.getCharacterHtml = function() {
        const { name, avatar, health, diceCount } = this;
@@ -20,12 +26,6 @@ function Character(data) {
              </div>
           </div>`;
     }
- 
-   //  this.getDiceHtml = function(diceCount) {
-   //     return getDiceRollArray(diceCount).map( function (num) {
-   //        return `<div class="dice">${num}</div>`;   
-   //     }).join('');
-   //  }
  }
 
  export default Character;
