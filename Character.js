@@ -1,12 +1,14 @@
 // Named import must have the same name and curly brackets!!!
-import { getDiceRollArray } from "./utils.js";
+import { getDiceRollArray, getDicePlaceholderHtml } from "./utils.js";
 
 function Character(data) {
     Object.assign(this, data);
+
+    this.diceArray = getDicePlaceholderHtml(this.diceCount);
  
     this.getCharacterHtml = function() {
-       const { elementId, name, avatar, health, diceCount } = this;
-       const diceHtml = this.getDiceHtml(diceCount);
+       const { name, avatar, health, diceCount } = this;
+       // const diceHtml = this.getDiceHtml(diceCount);
        
        return `
           <div class="character-card">
@@ -14,16 +16,16 @@ function Character(data) {
              <img class="avatar" src="${avatar}" />
              <div class="health">health: <b> ${health} </b></div>
              <div class="dice-container">    
-                ${diceHtml}
+                ${this.diceArray}
              </div>
           </div>`;
     }
  
-    this.getDiceHtml = function(diceCount) {
-       return getDiceRollArray(diceCount).map( function (num) {
-          return `<div class="dice">${num}</div>`;   
-       }).join('');
-    }
+   //  this.getDiceHtml = function(diceCount) {
+   //     return getDiceRollArray(diceCount).map( function (num) {
+   //        return `<div class="dice">${num}</div>`;   
+   //     }).join('');
+   //  }
  }
 
  export default Character;
