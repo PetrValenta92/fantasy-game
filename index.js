@@ -2,6 +2,8 @@ import charData from "./data.js";
 import Character from "./Character.js";
 
 function attack() {
+   wizard.getDiceHtml();
+   ork.getDiceHtml();
    render();
 }
 
