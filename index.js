@@ -3,19 +3,23 @@ import Character from "./Character.js";
 
 function attack() {
    wizard.getDiceHtml();
-   ork.getDiceHtml();
+   orc.getDiceHtml();
+
+   wizard.takeDamage(orc.currentDiceScore);
+   orc.takeDamage(wizard.currentDiceScore);
+
    render();
 }
 
 function render() {
    document.getElementById('hero').innerHTML = wizard.getCharacterHtml();
-   document.getElementById('monster').innerHTML = ork.getCharacterHtml();
+   document.getElementById('monster').innerHTML = orc.getCharacterHtml();
 };
 
 document.getElementById('attack-button').addEventListener('click', attack);
 
 const wizard = new Character(charData.hero);
-const ork = new Character(charData.monster);
+const orc = new Character(charData.monster);
 
 render();
 

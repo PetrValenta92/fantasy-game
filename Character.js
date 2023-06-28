@@ -8,17 +8,22 @@ function Character(data) {
     // Take data from getDicePlaceholderHtml() and add it into the "this" BUT NOT into "data"
     this.diceArray = getDicePlaceholderHtml(this.diceCount);
 
-    // Take data from currentDiceCount array and add it into this.diceArray property
-    // Return a string of each dice HTML elements
+    // Take data from currentDiceScore array and add it into this.diceArray property
+    // Return a this.DiceArray = string of each dice HTML elements
     this.getDiceHtml = function() {
-      // Fill currentDiceCount array with random numbers from getDiceRollArray()
-       this.currentDiceCount = getDiceRollArray(this.diceCount);
 
-       this.diceArray = this.currentDiceCount.map(function(num) {
+      // Fill currentDiceScore array with random numbers from getDiceRollArray() (depending on diceCount)
+       this.currentDiceScore = getDiceRollArray(this.diceCount);
+
+       this.diceArray = this.currentDiceScore.map(function(num) {
             return `<div class="dice">${num}</div>`;
          }).join('');
     }
- 
+
+    this.takeDamage = function (attackScoreArray) {
+      console.log(`${this.name}: ${attackScoreArray}`);
+    }
+    
     this.getCharacterHtml = function() {
        const { name, avatar, health, diceCount, diceArray } = this;       
        
