@@ -154,3 +154,13 @@ render();
 // Returns a new version of the target object
 
 // Object.assign(target, source)
+
+// ------------------------------------- THE .reduce() METHOD ----------------------------------------
+// Returns just a one "thing" from the array
+
+// ----------------------------- Example --------------------------
+// const rainJanuaryByWeek = [ 10, 20, 0, 122 ]
+// const totalRainfallJanuary = rainJanuaryByWeek.reduce(function(total, currentElement){
+//     return total + currentElement
+// })
+// console.log(totalRainfallJanuary) // 152
