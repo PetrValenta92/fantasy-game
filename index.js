@@ -16,7 +16,19 @@ function attack() {
 }
 
 function endGame() {
-   console.log("this game is over");
+   const endMessage = wizard.health === 0 && orc.health === 0 
+      ? 'No victors - all creatures are dead'
+      : wizard.health > 0 ? 'The Wizard Wins' 
+      : 'The Orc is Victorious' ;
+
+   const endEmoji = endMessage === 'The Wizard Wins' ? '🔮' : '☠️';
+
+   document.body.innerHTML = `
+      <div class="end-game">
+         <h2>Game Over</h2>
+         <h3>${endMessage}</h3>
+         <p class="end-emoji">${endEmoji}</p>
+      </div>` 
 }
 
 function render() {
@@ -172,3 +184,29 @@ render();
 //     return total + currentElement
 // })
 // console.log(totalRainfallJanuary) // 152
+
+// -------------------------------------- THE TERNARY OPERATOR ----------------------------------------------------
+// Alternative for if/else statement
+// Replacement for if/else? NO!
+// property = condition ? expression
+//    : condition ? expression 
+//    : expression
+
+// ---------------------------- Example ----------------------------
+// const exerciseTimeMins = 40
+// ------------- if/else ------------
+// let message = ''
+
+// if (exerciseTimeMins < 30) {
+//     message = 'You need to try harder!'
+// }
+// else if(exerciseTimeMins < 60) {
+//     message = 'Doing good!'
+// }
+// else {
+//     message = 'Excellent!'
+// }
+// ------- Ternary Operator --------
+// const message = exerciseTimeMins < 30 ? 'You need to try harder!' 
+//     : exerciseTimeMins < 60 ? 'Doing good!' 
+//     : 'Excellent!'
