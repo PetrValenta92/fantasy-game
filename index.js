@@ -9,6 +9,14 @@ function attack() {
    orc.takeDamage(wizard.currentDiceScore);
 
    render();
+
+   if (orc.dead || wizard.dead) {
+      endGame();
+   }
+}
+
+function endGame() {
+   console.log("this game is over");
 }
 
 function render() {
@@ -154,7 +162,7 @@ render();
 // Returns a new version of the target object
 
 // Object.assign(target, source)
-
+ 
 // ------------------------------------- THE .reduce() METHOD ----------------------------------------
 // Returns just a one "thing" from the array
 

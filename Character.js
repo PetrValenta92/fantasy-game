@@ -30,6 +30,7 @@ function Character(data) {
 
       if (this.health <= 0) {
          this.health = 0;
+         this.dead = true;
       } 
     }
     
