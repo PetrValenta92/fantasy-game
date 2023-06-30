@@ -14,18 +14,14 @@ function Character(data) {
 
       // Fill currentDiceScore array with random numbers from getDiceRollArray() (depending on diceCount)
        this.currentDiceScore = getDiceRollArray(this.diceCount);
-
-       this.diceArray = this.currentDiceScore.map(function(num) {
-            return `<div class="dice">${num}</div>`;
-         }).join('');
+       this.diceArray = this.currentDiceScore.map( num => 
+         `<div class="dice">${num}</div>` ).join('');
     }
 
     this.takeDamage = function (attackScoreArray) {
 
-      const totalAttackScore = attackScoreArray.reduce(function (total, score) {
-         return total + score;
-      });
-
+      const totalAttackScore = attackScoreArray.reduce( (total, score) =>  total + score );
+      
       this.health -= totalAttackScore;
 
       if (this.health <= 0) {

@@ -210,3 +210,22 @@ render();
 // const message = exerciseTimeMins < 30 ? 'You need to try harder!' 
 //     : exerciseTimeMins < 60 ? 'Doing good!' 
 //     : 'Excellent!'
+
+// ---------------------------------------- ARROW FUNCTIONS -------------------------------------------
+// If you have one parameter, you don't have to use brackets
+// If you have zero or multiple parameters, you have to use brackets
+// You can return one line of code without curly braces or the return keyword
+// More complex logic requires the curly braces and the return keyword
+
+// ---------------------------- Example --------------------------------
+// function speedWarning(speed){
+//    return `You are going at ${speed} mph!`
+// }
+// ----------- Arrow function -------------------
+// const speedWarning = speed => `You are going at ${speed} mph!`;
+
+// const speedWarning = (speedLimit, currentSpeed) => {
+//    if (speedLimit < currentSpeed) {
+//       return `You are going at ${currentSpeed} mph!`;
+//    }
+// };
