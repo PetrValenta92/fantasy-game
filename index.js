@@ -17,8 +17,16 @@ function attack() {
 
    render();
 
-   if (monster.dead || wizard.dead) {
+   if (wizard.dead) {
       endGame();
+   } else if (monster.dead) {
+      
+      if (monstersArray.length > 0) {
+         monster = getNewMonster();
+         render();
+      } else {
+         endGame();
+      }
    }
 }
 
