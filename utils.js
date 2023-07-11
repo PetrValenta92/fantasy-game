@@ -13,5 +13,8 @@ function getDiceRollArray(diceCount) {
    }).join('');
  }
 
+ const getPercentage = (remainingHealt, maximumHealt) => 
+   (100 * remainingHealt) / maximumHealt;
+
  // Named export - only one at the time; must be in curly brackets!!!
- export {getDiceRollArray, getDicePlaceholderHtml} 
+ export {getDiceRollArray, getDicePlaceholderHtml, getPercentage} 

@@ -1,8 +1,5 @@
 // Named import must have the same name and curly brackets!!!
-import { getDiceRollArray, getDicePlaceholderHtml } from "./utils.js";
-
-const getPercentage = (remainingHealt, maximumHealt) => 
-   (100 * remainingHealt) / maximumHealt;
+import { getDiceRollArray, getDicePlaceholderHtml, getPercentage } from "./utils.js";
 
 function Character(data) {
    // Take data from "data.js" and convert it to "this" constructor function
