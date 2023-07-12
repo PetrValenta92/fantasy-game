@@ -6,15 +6,15 @@ function Character(data) {
     Object.assign(this, data);
 
     // Take data from getDicePlaceholderHtml() and add it into the "this" BUT NOT into "data"
-    this.diceArray = getDicePlaceholderHtml(this.diceCount);
+    this.diceHtml = getDicePlaceholderHtml(this.diceCount);
 
-    // Take data from currentDiceScore array and add it into this.diceArray property
-    // Return a this.DiceArray = string of each dice HTML elements
-    this.getDiceHtml = function() {
+    // Take data from currentDiceScore array and add it into this.diceHtml property
+    // Return a this.DiceHtml = string of each dice HTML elements
+    this.setDiceHtml = function() {
 
       // Fill currentDiceScore array with random numbers from getDiceRollArray() (depending on diceCount)
        this.currentDiceScore = getDiceRollArray(this.diceCount);
-       this.diceArray = this.currentDiceScore.map( num => 
+       this.diceHtml = this.currentDiceScore.map( num => 
          `<div class="dice">${num}</div>` ).join('');
     }
 
@@ -46,7 +46,7 @@ function Character(data) {
     }
     
     this.getCharacterHtml = function() {
-       const { name, avatar, health, diceCount, diceArray } = this;
+       const { name, avatar, health, diceCount, diceHtml } = this;
        const healthBar = this.getHealthBarHtml();       
        
        return `
@@ -56,7 +56,7 @@ function Character(data) {
              <div class="health">health: <b> ${health} </b></div>
              ${healthBar}
              <div class="dice-container">    
-                ${diceArray}
+                ${diceHtml}
              </div>
           </div>`;
     }
